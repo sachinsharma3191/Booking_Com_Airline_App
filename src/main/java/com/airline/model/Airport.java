@@ -1,35 +1,15 @@
 package com.airline.model;
 
-import java.util.TimeZone;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "airport")
 public class Airport {
 
-	/*
-	 * airport ID Unique OpenFlights identifier for this airport. Name Name of
-	 * airport. May or may not contain the City name. City Main city served by
-	 * airport. May be spelled differently from Name. Country Country or territory
-	 * where airport is located. See countries.dat to cross-reference to ISO 3166-1
-	 * codes. IATA 3-letter IATA code. Null if not assigned/unknown. ICAO 4-letter
-	 * ICAO code. Null if not assigned. Latitude Decimal degrees, usually to six
-	 * significant digits. Negative is South, positive is North. Longitude Decimal
-	 * degrees, usually to six significant digits. Negative is West, positive is
-	 * East. Altitude In feet. Timezone Hours offset from UTC. Fractional hours are
-	 * expressed as decimals, eg. India is 5.5. DST Daylight savings time. One of E
-	 * (Europe), A (US/Canada), S (South America), O (Australia), Z (New Zealand), N
-	 * (None) or U (Unknown). See also: Help: Time Tz database time zone Timezone in
-	 * "tz" (Olson) format, eg. "America/Los_Angeles". Type Type of the airport.
-	 * Value "airport" for air terminals, "station" for train stations, "port" for
-	 * ferry terminals and "unknown" if not known. In airports.csv, only
-	 * type=airport is included.
-	 */
-
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "AirportId", nullable = false, updatable = false)
-	private String airportID;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "AirportId",nullable = false,updatable  = false,unique= true)
+	private Integer airportID;
 	private String airportName;
 	private String city;
 	private String country;
@@ -37,14 +17,14 @@ public class Airport {
 	private String ICAO;
 	private String longitude;
 	private String latitude;
-	private Integer altitude;
-	private TimeZone timeZone;
+	private String altitude;
+	private String timeZone;
 	private String dayLightSaving;
+	private String timeZoneOslonFormat;
 	private String airportType;
 	
-	
-	public Airport(String airportID, String airportName, String city, String country, String iATA, String iCAO,
-			String longitude, String latitude, Integer altitude, TimeZone timeZone, String dayLightSaving,
+	public Airport(Integer airportID, String airportName, String city, String country, String iATA, String iCAO,
+			String longitude, String latitude, String altitude, String timeZone, String dayLightSaving,
 			String airportType) {
 		super();
 		this.airportID = airportID;
@@ -63,6 +43,14 @@ public class Airport {
 	
 
 
+	public Airport() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -77,9 +65,25 @@ public class Airport {
 
 
 	/**
+	 * @return the timeZoneOslonFormat
+	 */
+	public String getTimeZoneOslonFormat() {
+		return timeZoneOslonFormat;
+	}
+
+
+
+	/**
+	 * @param timeZoneOslonFormat the timeZoneOslonFormat to set
+	 */
+	public void setTimeZoneOslonFormat(String timeZoneOslonFormat) {
+		this.timeZoneOslonFormat = timeZoneOslonFormat;
+	}
+
+	/**
 	 * @return the airportID
 	 */
-	public String getAirportID() {
+	public Integer getAirportID() {
 		return airportID;
 	}
 
@@ -87,7 +91,7 @@ public class Airport {
 	/**
 	 * @param airportID the airportID to set
 	 */
-	public void setAirportID(String airportID) {
+	public void setAirportID(Integer airportID) {
 		this.airportID = airportID;
 	}
 
@@ -207,32 +211,32 @@ public class Airport {
 	/**
 	 * @return the altitude
 	 */
-	public Integer getAltitude() {
+	public String getAltitude() {
 		return altitude;
 	}
 
 
 	/**
-	 * @param altitude the altitude to set
+	 * @param data the altitude to set
 	 */
-	public void setAltitude(Integer altitude) {
-		this.altitude = altitude;
+	public void setAltitude(String data) {
+		this.altitude = data;
 	}
 
 
 	/**
 	 * @return the timeZone
 	 */
-	public TimeZone getTimeZone() {
+	public String getTimeZone() {
 		return timeZone;
 	}
 
 
 	/**
-	 * @param timeZone the timeZone to set
+	 * @param data the timeZone to set
 	 */
-	public void setTimeZone(TimeZone timeZone) {
-		this.timeZone = timeZone;
+	public void setTimeZone(String data) {
+		this.timeZone = data;
 	}
 
 

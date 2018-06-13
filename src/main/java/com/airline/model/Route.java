@@ -6,30 +6,48 @@ import javax.persistence.*;
 @Table(name = "route")
 public class Route {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "RouteId",nullable = false,updatable  = false,unique= true)
+	private Integer routeId;
 	private String airlineName;
 	private String airlineId;
 	private String sourceAirportId;
 	private String sourceAirport;
 	private String destinationAirportId;
 	private String destinationAirport;
-	private Boolean codeShare;
-	private Integer numberOfStops;
+	private String codeShare;
+	private String numberOfStops;
 	private String equipment;
 	
 	
+	/**
+	 * @return the routeId
+	 */
+	public Integer getRouteId() {
+		return routeId;
+	}
+
+	/**
+	 * @param routeId the routeId to set
+	 */
+	public void setRouteId(Integer routeId) {
+		this.routeId = routeId;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Route [airlineName=" + airlineName + ", airlineId=" + airlineId + ", sourceAirportId=" + sourceAirportId
-				+ ", sourceAirport=" + sourceAirport + ", destinationAirportId=" + destinationAirportId
-				+ ", destinationAirport=" + destinationAirport + ", codeShare=" + codeShare + ", numberOfStops="
-				+ numberOfStops + ", equipment=" + equipment + "]";
+		return "Route [routeId=" + routeId + ", airlineName=" + airlineName + ", airlineId=" + airlineId
+				+ ", sourceAirportId=" + sourceAirportId + ", sourceAirport=" + sourceAirport
+				+ ", destinationAirportId=" + destinationAirportId + ", destinationAirport=" + destinationAirport
+				+ ", codeShare=" + codeShare + ", numberOfStops=" + numberOfStops + ", equipment=" + equipment + "]";
 	}
 	
 	public Route(String airlineName, String airlineId, String sourceAirportId, String sourceAirport,
-			String destinationAirportId, String destinationAirport, Boolean codeShare, Integer numberOfStops,
+			String destinationAirportId, String destinationAirport, String codeShare, String numberOfStops,
 			String equipment) {
 		super();
 		this.airlineName = airlineName;
@@ -42,6 +60,10 @@ public class Route {
 		this.numberOfStops = numberOfStops;
 		this.equipment = equipment;
 	}
+	public Route() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -194,25 +216,25 @@ public class Route {
 	/**
 	 * @return the codeShare
 	 */
-	public Boolean getCodeShare() {
+	public String getCodeShare() {
 		return codeShare;
 	}
 	/**
 	 * @param codeShare the codeShare to set
 	 */
-	public void setCodeShare(Boolean codeShare) {
+	public void setCodeShare(String codeShare) {
 		this.codeShare = codeShare;
 	}
 	/**
 	 * @return the numberOfStops
 	 */
-	public Integer getNumberOfStops() {
+	public String getNumberOfStops() {
 		return numberOfStops;
 	}
 	/**
 	 * @param numberOfStops the numberOfStops to set
 	 */
-	public void setNumberOfStops(Integer numberOfStops) {
+	public void setNumberOfStops(String numberOfStops) {
 		this.numberOfStops = numberOfStops;
 	}
 	/**
