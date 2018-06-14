@@ -14,7 +14,7 @@ import com.airline.dto.PlaneDTO;
 import com.airline.service.PlaneService;
 
 @RestController
-@RequestMapping(value = "/plane")
+@RequestMapping(value = "/Plane")
 public class PlaneController {
 
 	@Autowired

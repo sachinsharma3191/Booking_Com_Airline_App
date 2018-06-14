@@ -32,7 +32,6 @@ public class PlaneDAOImpl implements PlaneDAO {
 		List<Object[]> rows = query.list();
 		List<PlaneDTO> planeList = new ArrayList<PlaneDTO>();
 		for (Object[] row : rows) {
-			System.out.println(row);
 			PlaneDTO planeDTO = new PlaneDTO();
 			planeDTO.setCountryName(row[0].toString());
 			planeDTO.setAirlineName(row[1].toString());
