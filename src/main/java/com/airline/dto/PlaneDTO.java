@@ -1,15 +1,39 @@
 package com.airline.dto;
 
-import javax.persistence.*;
-
 public class PlaneDTO {
 
 	private Integer PlaneID;
 	private String planeName;
 	private String IATA;
 	private String ICAO;
+	private String airlineName;
+	private String countryName;
 	
 	
+	/**
+	 * @return the airlineName
+	 */
+	public String getAirlineName() {
+		return airlineName;
+	}
+	/**
+	 * @param airlineName the airlineName to set
+	 */
+	public void setAirlineName(String airlineName) {
+		this.airlineName = airlineName;
+	}
+	/**
+	 * @return the countryName
+	 */
+	public String getCountryName() {
+		return countryName;
+	}
+	/**
+	 * @param countryName the countryName to set
+	 */
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
 	/**
 	 * @return the planeID
 	 */

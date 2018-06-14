@@ -37,7 +37,7 @@ public class ConvertData {
 		if (data.length > 0) {
 			data = cleanData(data);
 			airline.setAirlineName(data[1]);
-			airline.setalias(data[2]);
+			airline.setAlias(data[2]);
 			airline.setCallSign(data[3]);
 			airline.setIATACode(data[4]);
 			airline.setICAOCode(data[5]);

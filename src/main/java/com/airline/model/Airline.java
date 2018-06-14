@@ -165,19 +165,6 @@ public class Airline {
 		this.airlineName = airlineName;
 	}
 
-	/**
-	 * @return the alias
-	 */
-	public String getalias() {
-		return alias;
-	}
-
-	/**
-	 * @param alias the alias to set
-	 */
-	public void setalias(String alias) {
-		this.alias = alias;
-	}
 
 	/**
 	 * @return the callSign

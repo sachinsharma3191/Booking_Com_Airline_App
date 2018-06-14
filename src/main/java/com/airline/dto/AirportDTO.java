@@ -1,8 +1,5 @@
 package com.airline.dto;
 
-import javax.persistence.*;
-
-
 public class AirportDTO {
 
 	private Integer airportID;
