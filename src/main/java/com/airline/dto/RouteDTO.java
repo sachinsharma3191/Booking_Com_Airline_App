@@ -1,5 +1,6 @@
 package com.airline.dto;
 
+import java.util.Date;
 
 public class RouteDTO {
 
@@ -13,128 +14,19 @@ public class RouteDTO {
 	private String codeShare;
 	private String numberOfStops;
 	private String equipment;
-	
-	
+	private String departureTime;
+	private String arrivalTime;
 	/**
 	 * @return the routeId
 	 */
 	public Integer getRouteId() {
 		return routeId;
 	}
-
 	/**
 	 * @param routeId the routeId to set
 	 */
 	public void setRouteId(Integer routeId) {
 		this.routeId = routeId;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Route [routeId=" + routeId + ", airlineName=" + airlineName + ", airlineId=" + airlineId
-				+ ", sourceAirportId=" + sourceAirportId + ", sourceAirport=" + sourceAirport
-				+ ", destinationAirportId=" + destinationAirportId + ", destinationAirport=" + destinationAirport
-				+ ", codeShare=" + codeShare + ", numberOfStops=" + numberOfStops + ", equipment=" + equipment + "]";
-	}
-	
-	public RouteDTO(String airlineName, String airlineId, String sourceAirportId, String sourceAirport,
-			String destinationAirportId, String destinationAirport, String codeShare, String numberOfStops,
-			String equipment) {
-		super();
-		this.airlineName = airlineName;
-		this.airlineId = airlineId;
-		this.sourceAirportId = sourceAirportId;
-		this.sourceAirport = sourceAirport;
-		this.destinationAirportId = destinationAirportId;
-		this.destinationAirport = destinationAirport;
-		this.codeShare = codeShare;
-		this.numberOfStops = numberOfStops;
-		this.equipment = equipment;
-	}
-	
-	public RouteDTO() {
-		// TODO Auto-generated constructor stub
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((airlineId == null) ? 0 : airlineId.hashCode());
-		result = prime * result + ((airlineName == null) ? 0 : airlineName.hashCode());
-		result = prime * result + ((codeShare == null) ? 0 : codeShare.hashCode());
-		result = prime * result + ((destinationAirport == null) ? 0 : destinationAirport.hashCode());
-		result = prime * result + ((destinationAirportId == null) ? 0 : destinationAirportId.hashCode());
-		result = prime * result + ((equipment == null) ? 0 : equipment.hashCode());
-		result = prime * result + ((numberOfStops == null) ? 0 : numberOfStops.hashCode());
-		result = prime * result + ((sourceAirport == null) ? 0 : sourceAirport.hashCode());
-		result = prime * result + ((sourceAirportId == null) ? 0 : sourceAirportId.hashCode());
-		return result;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		RouteDTO other = (RouteDTO) obj;
-		if (airlineId == null) {
-			if (other.airlineId != null)
-				return false;
-		} else if (!airlineId.equals(other.airlineId))
-			return false;
-		if (airlineName == null) {
-			if (other.airlineName != null)
-				return false;
-		} else if (!airlineName.equals(other.airlineName))
-			return false;
-		if (codeShare == null) {
-			if (other.codeShare != null)
-				return false;
-		} else if (!codeShare.equals(other.codeShare))
-			return false;
-		if (destinationAirport == null) {
-			if (other.destinationAirport != null)
-				return false;
-		} else if (!destinationAirport.equals(other.destinationAirport))
-			return false;
-		if (destinationAirportId == null) {
-			if (other.destinationAirportId != null)
-				return false;
-		} else if (!destinationAirportId.equals(other.destinationAirportId))
-			return false;
-		if (equipment == null) {
-			if (other.equipment != null)
-				return false;
-		} else if (!equipment.equals(other.equipment))
-			return false;
-		if (numberOfStops == null) {
-			if (other.numberOfStops != null)
-				return false;
-		} else if (!numberOfStops.equals(other.numberOfStops))
-			return false;
-		if (sourceAirport == null) {
-			if (other.sourceAirport != null)
-				return false;
-		} else if (!sourceAirport.equals(other.sourceAirport))
-			return false;
-		if (sourceAirportId == null) {
-			if (other.sourceAirportId != null)
-				return false;
-		} else if (!sourceAirportId.equals(other.sourceAirportId))
-			return false;
-		return true;
 	}
 	/**
 	 * @return the airlineName
@@ -243,6 +135,159 @@ public class RouteDTO {
 	 */
 	public void setEquipment(String equipment) {
 		this.equipment = equipment;
+	}
+	/**
+	 * @return the departureTime
+	 */
+	public String getDepartureTime() {
+		return departureTime;
+	}
+	/**
+	 * @param departureTime the departureTime to set
+	 */
+	public void setDepartureTime(String departureTime) {
+		this.departureTime = departureTime;
+	}
+	/**
+	 * @return the arrivalTime
+	 */
+	public String getArrivalTime() {
+		return arrivalTime;
+	}
+	/**
+	 * @param arrivalTime the arrivalTime to set
+	 */
+	public void setArrivalTime(String arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((airlineId == null) ? 0 : airlineId.hashCode());
+		result = prime * result + ((airlineName == null) ? 0 : airlineName.hashCode());
+		result = prime * result + ((arrivalTime == null) ? 0 : arrivalTime.hashCode());
+		result = prime * result + ((codeShare == null) ? 0 : codeShare.hashCode());
+		result = prime * result + ((departureTime == null) ? 0 : departureTime.hashCode());
+		result = prime * result + ((destinationAirport == null) ? 0 : destinationAirport.hashCode());
+		result = prime * result + ((destinationAirportId == null) ? 0 : destinationAirportId.hashCode());
+		result = prime * result + ((equipment == null) ? 0 : equipment.hashCode());
+		result = prime * result + ((numberOfStops == null) ? 0 : numberOfStops.hashCode());
+		result = prime * result + ((routeId == null) ? 0 : routeId.hashCode());
+		result = prime * result + ((sourceAirport == null) ? 0 : sourceAirport.hashCode());
+		result = prime * result + ((sourceAirportId == null) ? 0 : sourceAirportId.hashCode());
+		return result;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RouteDTO other = (RouteDTO) obj;
+		if (airlineId == null) {
+			if (other.airlineId != null)
+				return false;
+		} else if (!airlineId.equals(other.airlineId))
+			return false;
+		if (airlineName == null) {
+			if (other.airlineName != null)
+				return false;
+		} else if (!airlineName.equals(other.airlineName))
+			return false;
+		if (arrivalTime == null) {
+			if (other.arrivalTime != null)
+				return false;
+		} else if (!arrivalTime.equals(other.arrivalTime))
+			return false;
+		if (codeShare == null) {
+			if (other.codeShare != null)
+				return false;
+		} else if (!codeShare.equals(other.codeShare))
+			return false;
+		if (departureTime == null) {
+			if (other.departureTime != null)
+				return false;
+		} else if (!departureTime.equals(other.departureTime))
+			return false;
+		if (destinationAirport == null) {
+			if (other.destinationAirport != null)
+				return false;
+		} else if (!destinationAirport.equals(other.destinationAirport))
+			return false;
+		if (destinationAirportId == null) {
+			if (other.destinationAirportId != null)
+				return false;
+		} else if (!destinationAirportId.equals(other.destinationAirportId))
+			return false;
+		if (equipment == null) {
+			if (other.equipment != null)
+				return false;
+		} else if (!equipment.equals(other.equipment))
+			return false;
+		if (numberOfStops == null) {
+			if (other.numberOfStops != null)
+				return false;
+		} else if (!numberOfStops.equals(other.numberOfStops))
+			return false;
+		if (routeId == null) {
+			if (other.routeId != null)
+				return false;
+		} else if (!routeId.equals(other.routeId))
+			return false;
+		if (sourceAirport == null) {
+			if (other.sourceAirport != null)
+				return false;
+		} else if (!sourceAirport.equals(other.sourceAirport))
+			return false;
+		if (sourceAirportId == null) {
+			if (other.sourceAirportId != null)
+				return false;
+		} else if (!sourceAirportId.equals(other.sourceAirportId))
+			return false;
+		return true;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "RouteDTO [routeId=" + routeId + ", airlineName=" + airlineName + ", airlineId=" + airlineId
+				+ ", sourceAirportId=" + sourceAirportId + ", sourceAirport=" + sourceAirport
+				+ ", destinationAirportId=" + destinationAirportId + ", destinationAirport=" + destinationAirport
+				+ ", codeShare=" + codeShare + ", numberOfStops=" + numberOfStops + ", equipment=" + equipment
+				+ ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + "]";
+	}
+	
+	public RouteDTO() {
+		
+	}
+	
+	public RouteDTO(Integer routeId, String airlineName, String airlineId, String sourceAirportId, String sourceAirport,
+			String destinationAirportId, String destinationAirport, String codeShare, String numberOfStops,
+			String equipment, String departureTime, String arrivalTime) {
+		super();
+		this.routeId = routeId;
+		this.airlineName = airlineName;
+		this.airlineId = airlineId;
+		this.sourceAirportId = sourceAirportId;
+		this.sourceAirport = sourceAirport;
+		this.destinationAirportId = destinationAirportId;
+		this.destinationAirport = destinationAirport;
+		this.codeShare = codeShare;
+		this.numberOfStops = numberOfStops;
+		this.equipment = equipment;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
 	}
 	
 	

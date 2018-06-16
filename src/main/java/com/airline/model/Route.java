@@ -1,5 +1,7 @@
 package com.airline.model;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +10,7 @@ public class Route {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "RouteId",nullable = false,updatable  = false,unique= true)
+	@Column(name = "RouteId", nullable = false, updatable = false, unique = true)
 	private Integer routeId;
 	private String airlineName;
 	private String airlineId;
@@ -19,8 +21,9 @@ public class Route {
 	private String codeShare;
 	private String numberOfStops;
 	private String equipment;
-	
-	
+	private Date departureTime;
+	private Date arrivalTime;
+
 	/**
 	 * @return the routeId
 	 */
@@ -29,13 +32,181 @@ public class Route {
 	}
 
 	/**
-	 * @param routeId the routeId to set
+	 * @param routeId
+	 *            the routeId to set
 	 */
 	public void setRouteId(Integer routeId) {
 		this.routeId = routeId;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @return the airlineName
+	 */
+	public String getAirlineName() {
+		return airlineName;
+	}
+
+	/**
+	 * @param airlineName
+	 *            the airlineName to set
+	 */
+	public void setAirlineName(String airlineName) {
+		this.airlineName = airlineName;
+	}
+
+	/**
+	 * @return the airlineId
+	 */
+	public String getAirlineId() {
+		return airlineId;
+	}
+
+	/**
+	 * @param airlineId
+	 *            the airlineId to set
+	 */
+	public void setAirlineId(String airlineId) {
+		this.airlineId = airlineId;
+	}
+
+	/**
+	 * @return the sourceAirportId
+	 */
+	public String getSourceAirportId() {
+		return sourceAirportId;
+	}
+
+	/**
+	 * @param sourceAirportId
+	 *            the sourceAirportId to set
+	 */
+	public void setSourceAirportId(String sourceAirportId) {
+		this.sourceAirportId = sourceAirportId;
+	}
+
+	/**
+	 * @return the sourceAirport
+	 */
+	public String getSourceAirport() {
+		return sourceAirport;
+	}
+
+	/**
+	 * @param sourceAirport
+	 *            the sourceAirport to set
+	 */
+	public void setSourceAirport(String sourceAirport) {
+		this.sourceAirport = sourceAirport;
+	}
+
+	/**
+	 * @return the destinationAirportId
+	 */
+	public String getDestinationAirportId() {
+		return destinationAirportId;
+	}
+
+	/**
+	 * @param destinationAirportId
+	 *            the destinationAirportId to set
+	 */
+	public void setDestinationAirportId(String destinationAirportId) {
+		this.destinationAirportId = destinationAirportId;
+	}
+
+	/**
+	 * @return the destinationAirport
+	 */
+	public String getDestinationAirport() {
+		return destinationAirport;
+	}
+
+	/**
+	 * @param destinationAirport
+	 *            the destinationAirport to set
+	 */
+	public void setDestinationAirport(String destinationAirport) {
+		this.destinationAirport = destinationAirport;
+	}
+
+	/**
+	 * @return the codeShare
+	 */
+	public String getCodeShare() {
+		return codeShare;
+	}
+
+	/**
+	 * @param codeShare
+	 *            the codeShare to set
+	 */
+	public void setCodeShare(String codeShare) {
+		this.codeShare = codeShare;
+	}
+
+	/**
+	 * @return the numberOfStops
+	 */
+	public String getNumberOfStops() {
+		return numberOfStops;
+	}
+
+	/**
+	 * @param numberOfStops
+	 *            the numberOfStops to set
+	 */
+	public void setNumberOfStops(String numberOfStops) {
+		this.numberOfStops = numberOfStops;
+	}
+
+	/**
+	 * @return the equipment
+	 */
+	public String getEquipment() {
+		return equipment;
+	}
+
+	/**
+	 * @param equipment
+	 *            the equipment to set
+	 */
+	public void setEquipment(String equipment) {
+		this.equipment = equipment;
+	}
+
+	/**
+	 * @return the departureTime
+	 */
+	public Date getDepartureTime() {
+		return departureTime;
+	}
+
+	/**
+	 * @param departureTime
+	 *            the departureTime to set
+	 */
+	public void setDepartureTime(Date departureTime) {
+		this.departureTime = departureTime;
+	}
+
+	/**
+	 * @return the arrivalTime
+	 */
+	public Date getArrivalTime() {
+		return arrivalTime;
+	}
+
+	/**
+	 * @param arrivalTime
+	 *            the arrivalTime to set
+	 */
+	public void setArrivalTime(Date arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -43,13 +214,19 @@ public class Route {
 		return "Route [routeId=" + routeId + ", airlineName=" + airlineName + ", airlineId=" + airlineId
 				+ ", sourceAirportId=" + sourceAirportId + ", sourceAirport=" + sourceAirport
 				+ ", destinationAirportId=" + destinationAirportId + ", destinationAirport=" + destinationAirport
-				+ ", codeShare=" + codeShare + ", numberOfStops=" + numberOfStops + ", equipment=" + equipment + "]";
+				+ ", codeShare=" + codeShare + ", numberOfStops=" + numberOfStops + ", equipment=" + equipment
+				+ ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + "]";
 	}
-	
-	public Route(String airlineName, String airlineId, String sourceAirportId, String sourceAirport,
+
+	public Route() {
+
+	}
+
+	public Route(Integer routeId, String airlineName, String airlineId, String sourceAirportId, String sourceAirport,
 			String destinationAirportId, String destinationAirport, String codeShare, String numberOfStops,
-			String equipment) {
+			String equipment, Date departureTime, Date arrivalTime) {
 		super();
+		this.routeId = routeId;
 		this.airlineName = airlineName;
 		this.airlineId = airlineId;
 		this.sourceAirportId = sourceAirportId;
@@ -59,12 +236,13 @@ public class Route {
 		this.codeShare = codeShare;
 		this.numberOfStops = numberOfStops;
 		this.equipment = equipment;
-	}
-	public Route() {
-		// TODO Auto-generated constructor stub
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -73,16 +251,22 @@ public class Route {
 		int result = 1;
 		result = prime * result + ((airlineId == null) ? 0 : airlineId.hashCode());
 		result = prime * result + ((airlineName == null) ? 0 : airlineName.hashCode());
+		result = prime * result + ((arrivalTime == null) ? 0 : arrivalTime.hashCode());
 		result = prime * result + ((codeShare == null) ? 0 : codeShare.hashCode());
+		result = prime * result + ((departureTime == null) ? 0 : departureTime.hashCode());
 		result = prime * result + ((destinationAirport == null) ? 0 : destinationAirport.hashCode());
 		result = prime * result + ((destinationAirportId == null) ? 0 : destinationAirportId.hashCode());
 		result = prime * result + ((equipment == null) ? 0 : equipment.hashCode());
 		result = prime * result + ((numberOfStops == null) ? 0 : numberOfStops.hashCode());
+		result = prime * result + ((routeId == null) ? 0 : routeId.hashCode());
 		result = prime * result + ((sourceAirport == null) ? 0 : sourceAirport.hashCode());
 		result = prime * result + ((sourceAirportId == null) ? 0 : sourceAirportId.hashCode());
 		return result;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -104,10 +288,20 @@ public class Route {
 				return false;
 		} else if (!airlineName.equals(other.airlineName))
 			return false;
+		if (arrivalTime == null) {
+			if (other.arrivalTime != null)
+				return false;
+		} else if (!arrivalTime.equals(other.arrivalTime))
+			return false;
 		if (codeShare == null) {
 			if (other.codeShare != null)
 				return false;
 		} else if (!codeShare.equals(other.codeShare))
+			return false;
+		if (departureTime == null) {
+			if (other.departureTime != null)
+				return false;
+		} else if (!departureTime.equals(other.departureTime))
 			return false;
 		if (destinationAirport == null) {
 			if (other.destinationAirport != null)
@@ -129,6 +323,11 @@ public class Route {
 				return false;
 		} else if (!numberOfStops.equals(other.numberOfStops))
 			return false;
+		if (routeId == null) {
+			if (other.routeId != null)
+				return false;
+		} else if (!routeId.equals(other.routeId))
+			return false;
 		if (sourceAirport == null) {
 			if (other.sourceAirport != null)
 				return false;
@@ -141,114 +340,5 @@ public class Route {
 			return false;
 		return true;
 	}
-	/**
-	 * @return the airlineName
-	 */
-	public String getAirlineName() {
-		return airlineName;
-	}
-	/**
-	 * @param airlineName the airlineName to set
-	 */
-	public void setAirlineName(String airlineName) {
-		this.airlineName = airlineName;
-	}
-	/**
-	 * @return the airlineId
-	 */
-	public String getAirlineId() {
-		return airlineId;
-	}
-	/**
-	 * @param airlineId the airlineId to set
-	 */
-	public void setAirlineId(String airlineId) {
-		this.airlineId = airlineId;
-	}
-	/**
-	 * @return the sourceAirportId
-	 */
-	public String getSourceAirportId() {
-		return sourceAirportId;
-	}
-	/**
-	 * @param sourceAirportId the sourceAirportId to set
-	 */
-	public void setSourceAirportId(String sourceAirportId) {
-		this.sourceAirportId = sourceAirportId;
-	}
-	/**
-	 * @return the sourceAirport
-	 */
-	public String getSourceAirport() {
-		return sourceAirport;
-	}
-	/**
-	 * @param sourceAirport the sourceAirport to set
-	 */
-	public void setSourceAirport(String sourceAirport) {
-		this.sourceAirport = sourceAirport;
-	}
-	/**
-	 * @return the destinationAirportId
-	 */
-	public String getDestinationAirportId() {
-		return destinationAirportId;
-	}
-	/**
-	 * @param destinationAirportId the destinationAirportId to set
-	 */
-	public void setDestinationAirportId(String destinationAirportId) {
-		this.destinationAirportId = destinationAirportId;
-	}
-	/**
-	 * @return the destinationAirport
-	 */
-	public String getDestinationAirport() {
-		return destinationAirport;
-	}
-	/**
-	 * @param destinationAirport the destinationAirport to set
-	 */
-	public void setDestinationAirport(String destinationAirport) {
-		this.destinationAirport = destinationAirport;
-	}
-	/**
-	 * @return the codeShare
-	 */
-	public String getCodeShare() {
-		return codeShare;
-	}
-	/**
-	 * @param codeShare the codeShare to set
-	 */
-	public void setCodeShare(String codeShare) {
-		this.codeShare = codeShare;
-	}
-	/**
-	 * @return the numberOfStops
-	 */
-	public String getNumberOfStops() {
-		return numberOfStops;
-	}
-	/**
-	 * @param numberOfStops the numberOfStops to set
-	 */
-	public void setNumberOfStops(String numberOfStops) {
-		this.numberOfStops = numberOfStops;
-	}
-	/**
-	 * @return the equipment
-	 */
-	public String getEquipment() {
-		return equipment;
-	}
-	/**
-	 * @param equipment the equipment to set
-	 */
-	public void setEquipment(String equipment) {
-		this.equipment = equipment;
-	}
-	
-	
+
 }
