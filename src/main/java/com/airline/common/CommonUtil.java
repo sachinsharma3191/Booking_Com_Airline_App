@@ -2,7 +2,10 @@ package com.airline.common;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 public class CommonUtil {
 
@@ -20,6 +23,36 @@ public class CommonUtil {
 
 	public static Date convertTimestampToDate(Timestamp time) {
 		return new Date(time.getTime());
+	}
 
+	public static boolean isNotNullOrEmptyString(String string) {
+		return !isNullorEmptyString(string);
+	}
+
+	public static boolean isNullorEmptyString(String obj) {
+		return obj.isEmpty() || obj.length() == 0 || "".equals(obj);
+	}
+
+	public static boolean isNotNullorEmptyObject(Object obj) {
+		return !isNullorEmptyObject(obj);
+	}
+
+	public static boolean isNullorEmptyObject(Object obj) {
+		return obj == null;
+	}
+
+	public static boolean isNotEmptyList(List<?> list) {
+		return !isEmptyList(list);
+	}
+
+	public static boolean isEmptyList(List<?> list) {
+		return list == null || list.isEmpty() || list.size() == 0;
+	}
+	
+	public static <T> List<T> castList(Class<? extends T> clazz, Collection<?> c) {
+	    List<T> r = new ArrayList<T>(c.size());
+	    for(Object o: c)
+	      r.add(clazz.cast(o));
+	    return r;
 	}
 }

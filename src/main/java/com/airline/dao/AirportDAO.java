@@ -12,5 +12,7 @@ public interface AirportDAO {
 	public List<AirportDTO> getAirportByIATA(String iataCode);
 
 	public List<AirportDTO> getAirportByICAO(String icaoCode);
-
+	
+	public List<String> getAirportByCity(String city);
+	
 }
