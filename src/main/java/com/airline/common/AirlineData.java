@@ -22,7 +22,7 @@ public class AirlineData {
 
 		String[] lines = null;
 		try {
-			lines = Files.readAllLines(FILES[3].toPath()).toArray(new String[0]);
+			lines = Files.readAllLines(FILES[0].toPath()).toArray(new String[0]);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -34,7 +34,7 @@ public class AirlineData {
 	public static String[] readAirPlaneFile() {
 		String[] lines = null;
 		try {
-			lines = Files.readAllLines(FILES[0].toPath()).toArray(new String[0]);
+			lines = Files.readAllLines(FILES[3].toPath()).toArray(new String[0]);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -46,7 +46,7 @@ public class AirlineData {
 	public static String[] readAirportFile() {
 		String[] lines = null;
 		try {
-			lines = Files.readAllLines(FILES[1].toPath()).toArray(new String[0]);
+			lines = Files.readAllLines(FILES[2].toPath()).toArray(new String[0]);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
