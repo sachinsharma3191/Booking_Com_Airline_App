@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.airline.common.CommonUtil;
+import com.airline.config.HibernateSessionFactory;
 import com.airline.dto.AirportDTO;
 import com.airline.model.Airport;
 
@@ -20,13 +21,13 @@ import com.airline.model.Airport;
 @Repository
 public class AirportDAOImpl implements AirportDAO {
 
-	//@Autowired
-	SessionFactory sessionFactory;
+	@Autowired
+	HibernateSessionFactory sessionFactory;
 
 	@Override
 	public List<AirportDTO> getAirportList() {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getSessionFactory().openSession();
 		List<AirportDTO> planeList = session.createQuery("From Airport").list();
 		return planeList;
 	}
@@ -34,7 +35,8 @@ public class AirportDAOImpl implements AirportDAO {
 	@Override
 	public List<AirportDTO> getAirportByCountry(String country) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		List<AirportDTO> planeList = session.createQuery("From Airport where country = :country")
 				.setString("country", country).list();
 		return planeList;
@@ -43,7 +45,8 @@ public class AirportDAOImpl implements AirportDAO {
 	@Override
 	public List<AirportDTO> getAirportByIATA(String iataCode) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		List<AirportDTO> planeList = session.createQuery("From Airport where iata = :iata").setString("iata", iataCode)
 				.list();
 		return planeList;
@@ -52,7 +55,8 @@ public class AirportDAOImpl implements AirportDAO {
 	@Override
 	public List<AirportDTO> getAirportByICAO(String icaoCode) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		List<AirportDTO> planeList = session.createQuery("From Airport where icao = :icao").setString("icao", icaoCode)
 				.list();
 		return planeList;
@@ -61,7 +65,8 @@ public class AirportDAOImpl implements AirportDAO {
 	@Override
 	public List<String> getAirportByCity(String city) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		Criteria crit = session.createCriteria(Airport.class);
 		crit.add(Restrictions.isNotNull("IATA"));
 		crit.add(Restrictions.eqOrIsNull("city", city));

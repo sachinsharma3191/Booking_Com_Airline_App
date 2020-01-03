@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.airline.config.HibernateSessionFactory;
 import com.airline.dto.RouteDTO;
 import com.airline.model.Route;
 
@@ -18,8 +19,8 @@ import com.airline.model.Route;
 @Repository
 public class RouteDAOImpl implements RouteDAO {
 
-	//@Autowired
-	SessionFactory sessionFactory;
+	@Autowired
+	HibernateSessionFactory sessionFactory;
 
 	@Autowired
 	AirportDAO airportDAO;
@@ -27,7 +28,9 @@ public class RouteDAOImpl implements RouteDAO {
 	@Override
 	public List<RouteDTO> getRouteList(String sourceCity, String destinationCity) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
+		
 		Criteria crit = session.createCriteria(Route.class);
 		crit.add(Restrictions.in("sourceAirport", airportDAO.getAirportByCity(sourceCity)));
 		crit.add(Restrictions.in("destinationAirport", airportDAO.getAirportByCity(destinationCity)));

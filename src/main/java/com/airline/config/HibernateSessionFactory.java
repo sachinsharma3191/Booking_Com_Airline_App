@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HibernateSessionConfig {
+public class HibernateSessionFactory {
 
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;

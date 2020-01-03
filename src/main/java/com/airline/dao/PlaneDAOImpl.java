@@ -11,14 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.airline.config.HibernateSessionFactory;
 import com.airline.dto.PlaneDTO;
 
 @Transactional
 @Repository
 public class PlaneDAOImpl implements PlaneDAO {
 
-	//@Autowired
-	SessionFactory sessionFactory;
+	@Autowired
+	HibernateSessionFactory sessionFactory;
 
 	@Override
 	public List<PlaneDTO> getPlaneList(String countryName) {
@@ -26,7 +27,8 @@ public class PlaneDAOImpl implements PlaneDAO {
 		String sqlQuery = "select distinct airline.country ,airline.airline_name,plane.plane_name from plane plane "
 				+ " join airline airline " + " on plane.iata = airline.iatacode " + " or plane.icao = airline.icaocode "
 				+ " where country = '" + countryName + "'";
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		Query query = session.createSQLQuery(sqlQuery).addScalar("country", new StringType())
 				.addScalar("airline_name", new StringType()).addScalar("plane_name", new StringType());
 		List<Object[]> rows = query.list();
@@ -45,7 +47,8 @@ public class PlaneDAOImpl implements PlaneDAO {
 	@Override
 	public List<PlaneDTO> getPlaneByIATA(String IATA) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		Query query = session.createQuery("From Plane where iata	 = :iata");
 		query.setString("iata", IATA);
 		List<PlaneDTO> planeList = query.list();
@@ -55,7 +58,8 @@ public class PlaneDAOImpl implements PlaneDAO {
 	@Override
 	public List<PlaneDTO> getPlaneByICAO(String ICAO) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		Query query = session.createQuery("From Plane where icao = :icao");
 		query.setString("icao", ICAO);
 		List<PlaneDTO> planeList = query.list();
@@ -69,7 +73,8 @@ public class PlaneDAOImpl implements PlaneDAO {
 				+ " join airline airline " + " on plane.iata = airline.iatacode " + " or plane.icao = airline.icaocode"
 				+ " where airline.airline_name = '" + airlineName + "'" + " or plane.icao = '" + airlineName + "'"
 				+ " or plane.iata = '" + airlineName + "'";
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		Query query = session.createSQLQuery(sqlQuery).addScalar("country", new StringType())
 				.addScalar("airline_name", new StringType()).addScalar("plane_name", new StringType());
 		List<Object[]> rows = query.list();
@@ -89,7 +94,8 @@ public class PlaneDAOImpl implements PlaneDAO {
 	@Override
 	public List<PlaneDTO> getPlaneList() {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		Query query = session.createQuery("from Plane");
 		List<PlaneDTO> planeList = query.list();
 		return planeList;

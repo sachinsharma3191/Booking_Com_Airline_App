@@ -42,7 +42,7 @@ public class AirlineController {
 		return new ResponseEntity<List<AirlineDTO>>(list, httpStatus);
 	}
 
-	@RequestMapping(value = "/Active", method = RequestMethod.GET)
+	@RequestMapping(value = "/active", method = RequestMethod.GET)
 	public ResponseEntity<List<AirlineDTO>> getActiveAirlines() {
 		List<AirlineDTO> list = airlineService.getActiveAirlines();
 		HttpStatus httpStatus = !list.isEmpty()  ? HttpStatus.OK : HttpStatus.NOT_FOUND;
@@ -50,7 +50,7 @@ public class AirlineController {
 
 	}
 
-	@RequestMapping(value = "/Inactive", method = RequestMethod.GET)
+	@RequestMapping(value = "/inactive", method = RequestMethod.GET)
 	public ResponseEntity<List<AirlineDTO>> getInActiveAirlines() {
 		List<AirlineDTO> list = airlineService.getActiveAirlines();
 		HttpStatus httpStatus = !list.isEmpty()  ? HttpStatus.OK : HttpStatus.NOT_FOUND;

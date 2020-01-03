@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.airline.common.AirlineData;
 import com.airline.common.ConvertData;
+import com.airline.config.HibernateSessionFactory;
 import com.airline.model.Airline;
 import com.airline.model.Airport;
 import com.airline.model.Plane;
@@ -20,12 +21,13 @@ import com.airline.model.Route;
 @Repository
 public class LoadDataDAO {
 
-	//@Autowired
-	SessionFactory sessionFactory;
+	@Autowired
+	HibernateSessionFactory sessionFactory;
 
 	public void saveAirlineData() {
 		String[] lines = AirlineData.readAirlineFile();
-		Session session = sessionFactory.openSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		for (String line : lines) {
 			Airline airline = ConvertData.convertToAirline(line.replaceAll("\"", ""));
 			session.save(airline);
@@ -37,7 +39,8 @@ public class LoadDataDAO {
 
 	public void saveAirPlaneData() {
 		String[] lines = AirlineData.readAirPlaneFile();
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
 		for (String line : lines) {
 			Plane plane = ConvertData.convertToAirPlane(line.replaceAll("\"", ""));
 			session.save(plane);
@@ -49,7 +52,8 @@ public class LoadDataDAO {
 
 	public void saveAirportData() {
 		String[] lines = AirlineData.readAirportFile();
-		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getSessionFactory().openSession();
+		
 		for (String line : lines) {
 
 			Airport airport = ConvertData.convertToAirPort(line.replaceAll("\"", ""));
@@ -62,7 +66,9 @@ public class LoadDataDAO {
 
 	public void saveAirRouteData() {
 		String[] lines = AirlineData.readAirRouteFile();
-		Session session = sessionFactory.getCurrentSession();
+
+		Session session = sessionFactory.getSessionFactory().openSession();
+
 		for (String line : lines) {
 			Route route = ConvertData.convertToRoute(line.replaceAll("\"", ""));
 			DataFactory df = new DataFactory();
