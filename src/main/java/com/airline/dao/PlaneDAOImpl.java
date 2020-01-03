@@ -17,7 +17,7 @@ import com.airline.dto.PlaneDTO;
 @Repository
 public class PlaneDAOImpl implements PlaneDAO {
 
-	@Autowired
+	//@Autowired
 	SessionFactory sessionFactory;
 
 	@Override

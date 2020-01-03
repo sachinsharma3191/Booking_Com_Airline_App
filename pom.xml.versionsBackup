@@ -6,7 +6,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>airline_app</artifactId>
-	<version>2.2.2.RELEASE</version>
+	<version>1.5.10.RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>airline_app</name>
@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.2.RELEASE</version>
+		<version>1.5.10.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -63,17 +63,14 @@
 		<dependency>
 			<groupId>com.github.javafaker</groupId>
 			<artifactId>javafaker</artifactId>
-			<version>1.0.1</version>
+			<version>0.15</version>
 		</dependency>
 		<dependency>
 			<groupId>org.fluttercode.datafactory</groupId>
 			<artifactId>datafactory</artifactId>
 			<version>0.8</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-java8</artifactId>
-		</dependency>
+
 	</dependencies>
 
 	<build>

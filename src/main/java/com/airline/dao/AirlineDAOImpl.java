@@ -15,7 +15,7 @@ import com.airline.dto.AirlineDTO;
 @Repository
 public class AirlineDAOImpl implements AirlineDAO {
 
-	@Autowired
+	//@Autowired
 	SessionFactory sessionFactory;
 	
 	@SuppressWarnings("unchecked")

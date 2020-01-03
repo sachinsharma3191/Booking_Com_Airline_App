@@ -18,7 +18,7 @@ import com.airline.model.Route;
 @Repository
 public class RouteDAOImpl implements RouteDAO {
 
-	@Autowired
+	//@Autowired
 	SessionFactory sessionFactory;
 
 	@Autowired

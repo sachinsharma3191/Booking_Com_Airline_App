@@ -20,7 +20,7 @@ import com.airline.model.Airport;
 @Repository
 public class AirportDAOImpl implements AirportDAO {
 
-	@Autowired
+	//@Autowired
 	SessionFactory sessionFactory;
 
 	@Override

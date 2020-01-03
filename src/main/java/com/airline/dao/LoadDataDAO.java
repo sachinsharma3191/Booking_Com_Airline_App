@@ -20,7 +20,7 @@ import com.airline.model.Route;
 @Repository
 public class LoadDataDAO {
 
-	@Autowired
+	//@Autowired
 	SessionFactory sessionFactory;
 
 	public void saveAirlineData() {
