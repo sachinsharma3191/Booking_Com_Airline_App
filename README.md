@@ -1,3 +1,3 @@
-## Booking.om  AIRLINE APPLICATION USING SPRING BOOT
+## Booking.com  AIRLINE APPLICATION USING SPRING BOOT
 
 #### This application is prototype of Booking.com for Flights.Implemented Redis-Cache for better Performance
