@@ -8,7 +8,7 @@ public class Airline {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Airline_ID",nullable = false,updatable  = false,unique= true)
+	@Column(name = "Airline_ID", nullable = false, updatable = false, unique = true)
 	private Integer airlineId;
 	private String airlineName;
 	private String alias;
@@ -17,7 +17,7 @@ public class Airline {
 	private String ICAOCode;
 	private String country;
 	private String isActive;
-	
+
 	/**
 	 * @return the alias
 	 */
@@ -32,8 +32,8 @@ public class Airline {
 		this.alias = alias;
 	}
 
-	public Airline(Integer airlineId, String airlineName, String alias, String callSign, String iATACode, String iCAOCode,
-			String country, String isActive) {
+	public Airline(Integer airlineId, String airlineName, String alias, String callSign, String iATACode,
+			String iCAOCode, String country, String isActive) {
 		super();
 		this.airlineId = airlineId;
 		this.airlineName = airlineName;
@@ -49,8 +49,9 @@ public class Airline {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -68,13 +69,12 @@ public class Airline {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
 	@Override
 	public String toString() {
 		return "Airline [airlineId=" + airlineId + ", airlineName=" + airlineName + ", alias=" + alias + ", callSign="
@@ -82,7 +82,9 @@ public class Airline {
 				+ ", isActive=" + isActive + "]";
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -165,7 +167,6 @@ public class Airline {
 		this.airlineName = airlineName;
 	}
 
-
 	/**
 	 * @return the callSign
 	 */
@@ -235,8 +236,5 @@ public class Airline {
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
 	}
-	
-	
-	
-	
+
 }

@@ -14,20 +14,20 @@ import com.airline.dto.PlaneDTO;
 import com.airline.service.PlaneService;
 
 @RestController
-@RequestMapping(value = "/Plane")
+@RequestMapping(value = "/plane")
 public class PlaneController {
 
 	@Autowired
 	PlaneService planeService;
 
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ResponseEntity<List<PlaneDTO>> getPlanesList() {
 		List<PlaneDTO> list = planeService.getPlaneList();
 		HttpStatus httpStatus = !list.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
 		return new ResponseEntity<List<PlaneDTO>>(list, httpStatus);
 	}
 
-	@RequestMapping(value = "/country/{countryName}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getPlanesByCountry/{countryName}", method = RequestMethod.GET)
 	public ResponseEntity<List<PlaneDTO>> getPlanesByCountry(@PathVariable("countryName") String countryName) {
 		List<PlaneDTO> list = planeService.getPlaneList(countryName);
 		HttpStatus httpStatus = !list.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
@@ -35,14 +35,14 @@ public class PlaneController {
 
 	}
 
-	@RequestMapping(value = "/iata/{IATA}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getPlanesByIATA/{IATA}", method = RequestMethod.GET)
 	public ResponseEntity<List<PlaneDTO>> getPlanesByIATA(@PathVariable("IATA") String IATA) {
 		List<PlaneDTO> list = planeService.getPlaneByIATA(IATA);
 		HttpStatus httpStatus = !list.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
 		return new ResponseEntity<List<PlaneDTO>>(list, httpStatus);
 	}
 
-	@RequestMapping(value = "/icao/{ICAO}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getPlanesByICAO/{ICAO}", method = RequestMethod.GET)
 	public ResponseEntity<List<PlaneDTO>> getPlanesByICAO(@PathVariable("ICAO") String ICAO) {
 		List<PlaneDTO> list = planeService.getPlaneByICAO(ICAO);
 		HttpStatus httpStatus = !list.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
@@ -55,6 +55,5 @@ public class PlaneController {
 		HttpStatus httpStatus = !list.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
 		return new ResponseEntity<List<PlaneDTO>>(list, httpStatus);
 	}
-		
-	
+
 }

@@ -23,11 +23,11 @@ public class LoadDataDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 
-	public void saveAirlineData()  {
+	public void saveAirlineData() {
 		String[] lines = AirlineData.readAirlineFile();
 		Session session = sessionFactory.openSession();
 		for (String line : lines) {
-			Airline airline = ConvertData.convertToAirline(line.replaceAll("\"",""));
+			Airline airline = ConvertData.convertToAirline(line.replaceAll("\"", ""));
 			session.save(airline);
 			// etc...
 		}
@@ -39,7 +39,7 @@ public class LoadDataDAO {
 		String[] lines = AirlineData.readAirPlaneFile();
 		Session session = sessionFactory.getCurrentSession();
 		for (String line : lines) {
-			Plane plane = ConvertData.convertToAirPlane(line.replaceAll("\"",""));
+			Plane plane = ConvertData.convertToAirPlane(line.replaceAll("\"", ""));
 			session.save(plane);
 			// etc...
 		}
@@ -51,10 +51,10 @@ public class LoadDataDAO {
 		String[] lines = AirlineData.readAirportFile();
 		Session session = sessionFactory.getCurrentSession();
 		for (String line : lines) {
-			
-			Airport airport = ConvertData.convertToAirPort(line.replaceAll("\"",""));
+
+			Airport airport = ConvertData.convertToAirPort(line.replaceAll("\"", ""));
 			session.save(airport);
-	
+
 			// etc...
 		}
 		session.close();
@@ -64,17 +64,17 @@ public class LoadDataDAO {
 		String[] lines = AirlineData.readAirRouteFile();
 		Session session = sessionFactory.getCurrentSession();
 		for (String line : lines) {
-			Route route = ConvertData.convertToRoute(line.replaceAll("\"",""));
+			Route route = ConvertData.convertToRoute(line.replaceAll("\"", ""));
 			DataFactory df = new DataFactory();
-			Date minDate = df.getDate(2018,6,1);
+			Date minDate = df.getDate(2018, 6, 1);
 			Date maxDate = new Date();
 			Date departureTime = df.getDateBetween(minDate, maxDate);
-			Date arrivalTime = df.getDate(departureTime, 0, 5); //set end to within 10 days of the start
+			Date arrivalTime = df.getDate(departureTime, 0, 5); // set end to within 10 days of the start
 			route.setDepartureTime(departureTime);
 			route.setArrivalTime(arrivalTime);
 			session.save(route);
 			// etc...
 		}
 		session.close();
-	}	
+	}
 }

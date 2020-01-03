@@ -14,34 +14,34 @@ import com.airline.dto.AirportDTO;
 import com.airline.service.AirportService;
 
 @RestController
-@RequestMapping(value = "/Airport")
+@RequestMapping(value = "/airport")
 public class AirportController {
 
 	@Autowired
 	AirportService airportService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public ResponseEntity<List<AirportDTO>> getAirportList() {
 		List<AirportDTO> list = airportService.getAirportList();
 		HttpStatus httpStatus = !list.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
 		return new ResponseEntity<List<AirportDTO>>(list, httpStatus);
 	}
 
-	@RequestMapping(value = "/country/{countryName}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAirportByCountry/{countryName}", method = RequestMethod.GET)
 	public ResponseEntity<List<AirportDTO>> getAirportByCountry(@PathVariable("countryName") String country) {
 		List<AirportDTO> list = airportService.getAirportByCountry(country);
 		HttpStatus httpStatus = !list.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
 		return new ResponseEntity<List<AirportDTO>>(list, httpStatus);
 	}
 
-	@RequestMapping(value = "/iata/{iata}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAirportByIATA/{iata}", method = RequestMethod.GET)
 	public ResponseEntity<List<AirportDTO>> getAirportByIATA(@PathVariable("iata") String iata) {
 		List<AirportDTO> list = airportService.getAirportByIATA(iata);
 		HttpStatus httpStatus = !list.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
 		return new ResponseEntity<List<AirportDTO>>(list, httpStatus);
 	}
 
-	@RequestMapping(value = "/icao/{icao}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAirportByICAO/{icao}", method = RequestMethod.GET)
 	public ResponseEntity<List<AirportDTO>> getAirportByICAO(@PathVariable("icao") String icao) {
 		List<AirportDTO> list = airportService.getAirportByICAO(icao);
 		HttpStatus httpStatus = !list.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND;

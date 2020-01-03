@@ -1,28 +1,30 @@
 package com.airline.common;
 
+import java.util.Arrays;
+
 import com.airline.model.*;
 
 public class ConvertData {
 
 	private static final String COMMA_SEPARATOR = "\\,";
 
-	public static String[] cleanData(String [] input) {
+	public static String[] cleanData(String[] input) {
 		String output[] = new String[input.length];
-		for(int i =0; i < input.length; i++) {
+		for (int i = 0; i < input.length; i++) {
 			output[i] = input[i].length() != 0 ? input[i] : "";
 		}
 		return output;
 	}
-	
-	public static String cleanData(String  input) {
-		return input.replaceAll("\"","");
+
+	public static String cleanData(String input) {
+		return input.replaceAll("\"", "");
 	}
-	
+
 	public static Plane convertToAirPlane(String planeInfo) {
 		Plane plane = new Plane();
-		
+
 		String data[] = planeInfo.split(COMMA_SEPARATOR);
-		data = cleanData(data);
+		data = ConvertData.cleanData(data);
 		if (data.length > 0) {
 			plane.setPlaneName(data[0]);
 			plane.setICAO(data[1]);
@@ -35,7 +37,7 @@ public class ConvertData {
 		String data[] = airlineInfo.split(COMMA_SEPARATOR);
 		Airline airline = new Airline();
 		if (data.length > 0) {
-			data = cleanData(data);
+			data = ConvertData.cleanData(data);
 			airline.setAirlineName(data[1]);
 			airline.setAlias(data[2]);
 			airline.setCallSign(data[3]);
@@ -52,7 +54,7 @@ public class ConvertData {
 		Airport airport = new Airport();
 		if (data.length > 0) {
 
-			data = cleanData(data);
+			data = ConvertData.cleanData(data);
 			airport.setAirportName(data[1]);
 			airport.setCity(data[2]);
 			airport.setCountry(data[3]);
@@ -73,7 +75,7 @@ public class ConvertData {
 		Route route = new Route();
 		String data[] = routeInfo.split(COMMA_SEPARATOR);
 		if (data.length > 0) {
-			data = cleanData(data);
+			data = ConvertData.cleanData(data);
 			route.setAirlineName(data[0]);
 			route.setAirlineId(data[1]);
 			route.setSourceAirport(data[2]);

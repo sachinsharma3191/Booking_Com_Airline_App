@@ -1,29 +1,29 @@
 package com.airline.common;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class AirlineData {
 
 	private static final String FOLDER_NAME = "src/main/resources/static/";
-	private static File FOLDER = null;
-	private static File[] FILES = null;
+	private static String[] FILES = new String[4];
+	private static String FILE_NAMES[] = { "airlines.dat", "airports.dat", "planes.dat", "routes.dat" };
+
 	static {
-		FOLDER = new File(FOLDER_NAME);
-		FILES = FOLDER.listFiles();
+		int counter = 0;
+
+		for (String fileName : FILE_NAMES) {
+			FILES[counter++] = new StringBuffer().append(FOLDER_NAME).append(fileName).toString();
+		}
 		
-		//for(File file : FILES) {
-		//	System.out.println(file.getName());
-		//}
 	}
 
 	public static String[] readAirlineFile() {
 
 		String[] lines = null;
 		try {
-			lines = Files.readAllLines(FILES[0].toPath()).toArray(new String[0]);
-
+			lines = Files.readAllLines(Paths.get(FILES[0])).toArray(new String[0]);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,7 +34,7 @@ public class AirlineData {
 	public static String[] readAirPlaneFile() {
 		String[] lines = null;
 		try {
-			lines = Files.readAllLines(FILES[3].toPath()).toArray(new String[0]);
+			lines = Files.readAllLines(Paths.get(FILES[1])).toArray(new String[0]);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -46,7 +46,7 @@ public class AirlineData {
 	public static String[] readAirportFile() {
 		String[] lines = null;
 		try {
-			lines = Files.readAllLines(FILES[2].toPath()).toArray(new String[0]);
+			lines = Files.readAllLines(Paths.get(FILES[2])).toArray(new String[0]);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -58,7 +58,7 @@ public class AirlineData {
 	public static String[] readAirRouteFile() {
 		String[] lines = null;
 		try {
-			lines = Files.readAllLines(FILES[4].toPath()).toArray(new String[0]);
+			lines = Files.readAllLines(Paths.get(FILES[3])).toArray(new String[0]);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
