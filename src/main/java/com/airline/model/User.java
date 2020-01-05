@@ -10,166 +10,93 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "USER_ACCOUNT")
 public class User implements java.io.Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8461696627141198264L;
-
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "USER_ID", nullable = false, updatable = false, unique = true)
-	private int userId;
-	private String firstName;
-	private String lastName;
-	private String userName;
-	private String email;
-	private String address;
-	private String city;
-	private String state;
-	private String postalCode;
-	private String country;
-	private String dob;
+	@Column(name = "LOGIN_ID", nullable = false, updatable = false, unique = true)
+	private int id;
+	
+	@Column(name = "USER_ID")
+	private String userId;
+
+	@Column(name = "USERNAME")
+	private String username;
+
+	@Column(name = "PASSWORD", nullable = false)
+	private String password;
+
+	@Column(name = "ENABLED", nullable = false)
+	private boolean enabled;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<UserRoles> authorities = new HashSet<>();
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "login")
 	private Set<UserLogin> userLogins = new HashSet<>(0);
 
-	public User() {
-		
-	}
-	
-	public User(String firstName, String lastName, String userName, String email, String address, String city,
-			String state, String postalCode, String country, String dob) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-		this.email = email;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.postalCode = postalCode;
-		this.country = country;
-		this.dob = dob;
-	}
-
-	public User(int userId, String firstName, String lastName, String userName, String email, String address,
-			String city, String state, String postalCode, String country, String dob, Set<UserLogin> userLogins) {
-		super();
-		this.userId = userId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-		this.email = email;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.postalCode = postalCode;
-		this.country = country;
-		this.dob = dob;
-		this.userLogins = userLogins;
-	}
-
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public int getId() {
+		return id;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getusername() {
+		return username;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setusername(String username) {
+		this.username = username;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
+	public Set<UserRoles> getAuthorities() {
+		return authorities;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAuthorities(Set<UserRoles> authorities) {
+		this.authorities = authorities;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getDob() {
-		return dob;
-	}
-
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
-
-	public Set<UserLogin> getuserLogins() {
+	public Set<UserLogin> getUserLogins() {
 		return userLogins;
 	}
 
-	public void setuserLogins(Set<UserLogin> userLogins) {
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public void setUserLogins(Set<UserLogin> userLogins) {
 		this.userLogins = userLogins;
 	}
 
@@ -177,18 +104,10 @@ public class User implements java.io.Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((city == null) ? 0 : city.hashCode());
-		result = prime * result + ((country == null) ? 0 : country.hashCode());
-		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((postalCode == null) ? 0 : postalCode.hashCode());
-		result = prime * result + ((state == null) ? 0 : state.hashCode());
-		result = prime * result + userId;
-		result = prime * result + ((userLogins == null) ? 0 : userLogins.hashCode());
-		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
 
@@ -201,65 +120,89 @@ public class User implements java.io.Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
+		if (id != other.id)
 			return false;
-		if (city == null) {
-			if (other.city != null)
+		if (username == null) {
+			if (other.username != null)
 				return false;
-		} else if (!city.equals(other.city))
+		} else if (!username.equals(other.username))
 			return false;
-		if (country == null) {
-			if (other.country != null)
+		if (password == null) {
+			if (other.password != null)
 				return false;
-		} else if (!country.equals(other.country))
+		} else if (!password.equals(other.password))
 			return false;
-		if (dob == null) {
-			if (other.dob != null)
+		if (userId == null) {
+			if (other.userId != null)
 				return false;
-		} else if (!dob.equals(other.dob))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (firstName == null) {
-			if (other.firstName != null)
-				return false;
-		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
-				return false;
-		} else if (!lastName.equals(other.lastName))
-			return false;
-		if (postalCode == null) {
-			if (other.postalCode != null)
-				return false;
-		} else if (!postalCode.equals(other.postalCode))
-			return false;
-		if (state == null) {
-			if (other.state != null)
-				return false;
-		} else if (!state.equals(other.state))
-			return false;
-		if (userId != other.userId)
-			return false;
-		if (userLogins == null) {
-			if (other.userLogins != null)
-				return false;
-		} else if (!userLogins.equals(other.userLogins))
-			return false;
-		if (userName == null) {
-			if (other.userName != null)
-				return false;
-		} else if (!userName.equals(other.userName))
+		} else if (!userId.equals(other.userId))
 			return false;
 		return true;
 	}
 
-	
+	public User() {
+		super();
+	}
+
+	public User(int id, String userId, String username, String password, Set<UserRoles> authorities,
+			Set<UserLogin> userLogins) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.authorities = authorities;
+		this.userLogins = userLogins;
+	}
+
+	public User(int id, String username, String password, Set<UserLogin> userLogins) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.userLogins = userLogins;
+	}
+
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+
+	public User(LoginBuilder builder) {
+		super();
+		this.userId = builder.userId;
+		this.username = builder.username;
+		this.password = builder.password;
+	}
+
+	public static class LoginBuilder {
+		private String userId;
+		private String username;
+		private String password;
+
+		public static LoginBuilder builder() {
+			return new LoginBuilder();
+		}
+
+		public LoginBuilder userId(String userId) {
+			this.userId = userId;
+			return this;
+		}
+
+		public LoginBuilder username(String name) {
+			this.username = name;
+			return this;
+		}
+
+		public LoginBuilder password(String password) {
+			this.password = password;
+			return this;
+		}
+
+		public User build() {
+			return new User(this);
+		}
+	}
+
 }

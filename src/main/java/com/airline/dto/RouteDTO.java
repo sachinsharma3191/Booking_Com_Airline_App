@@ -1,7 +1,5 @@
 package com.airline.dto;
 
-import java.util.Date;
-
 public class RouteDTO {
 
 	private Integer routeId;

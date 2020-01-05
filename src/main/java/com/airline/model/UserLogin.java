@@ -2,21 +2,85 @@ package com.airline.model;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.AssociationOverride;
-import javax.persistence.AssociationOverrides;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
+class UserLoginId implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Column(name = "user_id")
+	private int user_id;
+
+	@Column(name = "id")
+	private int id;
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public UserLoginId() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserLoginId(int user_id, int id) {
+		super();
+		this.user_id = user_id;
+		this.id = id;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + user_id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserLoginId other = (UserLoginId) obj;
+		if (id != other.id)
+			return false;
+		if (user_id != other.user_id)
+			return false;
+		return true;
+	}
+
+}
 
 @Entity
-@Table(name = "user_login")
-//@AssociationOverrides({ @AssociationOverride(name = "user", joinColumns = @JoinColumn(name = "user_id")),
-//		@AssociationOverride(name = "login", joinColumns = @JoinColumn(name = "id")) })
+@Table(name = "USER_LOGIN")
 public class UserLogin implements java.io.Serializable {
 
 	/**
@@ -31,14 +95,14 @@ public class UserLogin implements java.io.Serializable {
 	private LocalDateTime lastLogin;
 
 	@ManyToOne
-	@MapsId("employer_id")
-	@JoinColumn(name = "user_id")
-	private User user;
+	@MapsId("USER_ID")
+	@JoinColumn(name = "USER_ID")
+	private UserDetail user;
 
 	@ManyToOne
 	@MapsId("id")
 	@JoinColumn(name = "id")
-	private Login login;
+	private User login;
 
 	public UserLoginId getId() {
 		return id;
@@ -64,23 +128,23 @@ public class UserLogin implements java.io.Serializable {
 		this.lastLogin = lastLogin;
 	}
 
-	public User getUser() {
+	public UserDetail getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserDetail user) {
 		this.user = user;
 	}
 
-	public Login getLogin() {
+	public User getLogin() {
 		return login;
 	}
 
-	public void setLogin(Login login) {
+	public void setLogin(User login) {
 		this.login = login;
 	}
 
-	public UserLogin(boolean isSuccessful, LocalDateTime lastLogin, User user, Login login) {
+	public UserLogin(boolean isSuccessful, LocalDateTime lastLogin, UserDetail user, User login) {
 		super();
 		this.isSuccessful = isSuccessful;
 		this.lastLogin = lastLogin;
@@ -138,8 +202,5 @@ public class UserLogin implements java.io.Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }
